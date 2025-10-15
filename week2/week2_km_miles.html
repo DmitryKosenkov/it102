@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Kilometers and Milesopy</h2>
+
+<script>
+    user_chose = prompt("Chose option: K for kilometers, M for miles")
+    if (user_chose == 'k'){
+        user_data = Number(prompt("write kilometers value"))
+        alert((user_data * 0.621371) + ' miles')
+    }
+    if (user_chose == 'm') {
+        user_data = Number(prompt("write miles value"))
+        alert((user_data / 0.621371) + ' kilometers')
+    } else {
+        alert("Invalid choice! Please type 'K' or 'M'.")
+    }
+</script>
+
+</body>
+</html> 
