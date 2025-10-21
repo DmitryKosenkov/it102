@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>ASCII Art Square</h3>
+
+<script>
+// Ask the user to enter a square size between 3 and 30.
+square_size = Number(prompt("enter a square size between 3 and 30"));
+// Continuously prompt the user to enter a number within the specified range if they input a number outside of the acceptable range.
+while(!(square_size >= 3 && square_size <=30)){
+    square_size = Number(prompt("Invalid input!\nEnter a square size between 3 and 30"));
+}
+
+function drawASquare(square_size){
+    for(row = 1; row <= square_size; row++){
+        document.write('<br>');
+        for(col = 1; col <= square_size; col++){
+            if (col == 1 || col == square_size || row == 1 || row == square_size){
+                document.write('*');
+            }
+            else{
+                document.write('&nbsp;&nbsp;');
+            }
+            
+    }
+}
+}
+
+function drawAFullSquare(square_size){
+    for(row = 1; row <= square_size; row++){
+        document.write('<br>');
+        for(col = 1; col <= square_size; col++){
+            document.write('*');
+        }
+    }
+}
+// Draw a square of the specified size.
+drawAFullSquare(square_size);
+document.write('<br>');
+drawASquare(square_size);
+
+</script>
+
+</body>
+</html> 

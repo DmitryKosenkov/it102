@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+
+<html> 
+    <head> 
+        <script>
+            function displayData(){
+                user_first_name = document.customerDataForm.elements[0].value;
+                user_last_name = document.customerDataForm.elements[1].value;
+                name_output = user_first_name + " " + user_last_name + "<br>";
+                document.getElementById("custDataDisplay").innerHTML=name_output;
+
+                user_email = document.customerDataForm.elements[2].value;
+                email_output = "Email: " + user_email + "<br>";
+                document.getElementById("custDataDisplay").innerHTML+=email_output;
+
+                user_password = document.customerDataForm.elements[3].value;
+                password_output = "Password: " + user_password;
+                document.getElementById("custDataDisplay").innerHTML+=password_output;
+
+            }
+        </script>
+    
+    </head>
+    
+    <body>
+        <h1>SOTD03 - Login Form</h1>
+        <hr />
+        
+        <form name="customerDataForm">
+            First Name: <input type="text"><br />  
+            Last Name: <input type="text"><br />
+            Email Address: <input type="text"><br />
+            Password: <input type="password"><br />
+                <input type="button" value="Submit" onclick="displayData()">
+        </form>
+        <h3>Customer Data</h3>
+        <p id="custDataDisplay"></p>
+    </body>
+</html>
