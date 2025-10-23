@@ -1,0 +1,89 @@
+<!DOCTYPE html> 
+
+<html> 
+    <head> 
+        <script>
+            function calculateGrossPay(hoursWorked){
+            if (hoursWorked <= 40){
+                grossPay = hoursWorked * 19.00;
+            }
+            else {
+                regularHours = 40;
+                overtimeHours = hoursWorked - regularHours;
+                regularPay = regularHours * 19.00;
+                overtimePay = overtimeHours * 19.00 * 1.5
+                grossPay = regularPay + overtimePay;
+            }
+            return grossPay;
+            }
+        
+            function calculateSocialSecurity(grossPay){
+            socialSecurityRate = 0.062;
+            socialSecurity = grossPay * socialSecurityRate;
+            return socialSecurity;
+            }
+        
+            function calculateMedicare(grossPay){
+                medicareRate = 0.0145;
+                medicare = grossPay * medicareRate;
+                return medicare;
+            }
+        
+            function calculateWithholding(grossPay, allowances){
+                withholdingAllowanceAmount = 77.90;
+                withholdingBase = allowances * withholdingAllowanceAmount;
+                taxableIncome = grossPay - withholdingBase;
+                withholdingRate = 0.20;
+                withholding = taxableIncome * withholdingRate;
+                return withholding;
+            }
+
+            function calculateNetPay (grossPay, socialSecurity, medicare, withholding){
+                netPay = grossPay - socialSecurity - medicare - withholding;
+                return netPay;
+            }
+
+            function generatePaystub(employeeName, hoursWorked, allowances){
+                grossPay = calculateGrossPay(hoursWorked);
+                socialSecurity = calculateSocialSecurity(grossPay);
+                medicare = calculateMedicare(grossPay);
+                withholding = calculateWithholding(grossPay, allowances);
+                netPay = calculateNetPay(grossPay, socialSecurity, medicare, withholding);
+
+                document.getElementById('payrollStub').innerHTML+="Employee Name: " + employeeName + '<br>';
+                document.getElementById('payrollStub').innerHTML+="Hours Worked: " + hoursWorked + '<br>';
+                document.getElementById('payrollStub').innerHTML+="Gross Pay: $" + grossPay + '<br>';
+                document.getElementById('payrollStub').innerHTML+="Social Security: $" + socialSecurity + '<br>';
+                document.getElementById('payrollStub').innerHTML+="Medicare: $" + medicare + '<br>';
+                document.getElementById('payrollStub').innerHTML+="Withholding: $" + withholding + '<br>';
+                document.getElementById('payrollStub').innerHTML+="Net Pay: $" + netPay;
+            }
+
+            function doPayroll(){
+                hoursWorked = document.employeeForm.elements[2].value;
+                allowances = document.employeeForm.elements[3].value;
+                employeeFirstName = document.employeeForm.elements[0].value;
+                employeeLastName = document.employeeForm.elements[1].value;
+                employeeName = employeeFirstName + ' ' + employeeLastName;
+                generatePaystub(employeeName, hoursWorked, allowances);
+
+            }
+        </script>
+    
+    </head>
+    
+    <body>
+        <h1>SOTD 3_3 - Payroll</h1>
+        <hr />
+        
+        <form name="employeeForm">
+            First Name: <input type="text"><br />  
+            Last Name: <input type="text"><br />
+            Enter Hours Worked: <input type="text"><br />
+            Enter number of withholding allowances: <input type="text"><br />
+                <input type="button" value="Submit" onclick="doPayroll()">
+        </form>
+        <h3>Payroll Stub</h3>
+        <p id="payrollStub"></p>
+    </body>
+</html>
