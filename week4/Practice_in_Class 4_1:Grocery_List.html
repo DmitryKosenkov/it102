@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Grocery List</title>
+  </head>
+  <body>
+    <h2>Grocery List</h2>
+    Enter grocery items separated by commas.
+    <br>
+    <textarea id="groceryInput" placeholder='Enter grocery items and sperate with comma ","when finished.'></textarea>
+    <br>
+    <button onclick="createGroceryList()">Create Grocery List</button>
+    <p id="groceryList"></p>
+    <p>Total items: <span id="totalItems"></span></p>
+
+  <script>
+    totalItems = 0;
+    function createGroceryList() {
+
+    userInput = document.getElementById("groceryInput").value;
+
+
+    if (userInput == ''){
+        alert('Please enter grocery items!');
+    }
+
+    else{
+        groceryItems = userInput.split(',');
+        makeGloceryList(groceryItems);
+    }
+    
+    };
+
+    function makeGloceryList(groceryItems){
+        for(i = 0; i < groceryItems.length; i++){
+            groceryItems[i] = groceryItems[i].trim().toLowerCase();
+        };
+
+        groceryItems.sort();
+
+        if (totalItems == 0){
+            for(i = 0; i < groceryItems.length; i++){
+                document.getElementById('groceryList').innerHTML+= (i+1) + '. ' + groceryItems[i] + '<br>';
+                totalItems++;
+            }
+        }
+        else{
+            for(i = 0; i < groceryItems.length; i++){
+                document.getElementById('groceryList').innerHTML+= (totalItems + i + 1) + '. ' + groceryItems[i] + '<br>';
+            }
+            totalItems+= groceryItems.length;
+        };
+        document.getElementById('totalItems').innerHTML=totalItems;
+        };
+    
+
+  </script>
+  </body>
+</html>
