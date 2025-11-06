@@ -34,16 +34,19 @@
         for(i = 0; i < 3; i++){
             num = Math.floor(Math.random() * 52)
 
+            // if card dealt it replaced by -1
             if(deck[num] == -1){
                 i--;
             }
             else{
                 hand.push(deck[num]);
-                deck[num]
+                deck[num] = -1;
             };
         }
     }
+    
     deal_hand(deck, hand);
+    
     alert(hand[0].rank + ' of ' + hand[0].suit);
     alert(hand[1].rank + ' of ' + hand[1].suit);
     alert(hand[2].rank + ' of ' + hand[2].suit);
