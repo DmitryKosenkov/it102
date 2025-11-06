@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+    function Card(suit, rank){
+    //create the suit property and assign it the value from the parameter.
+    this.suit = suit;
+    //create the rank property and assign it the value from the parameter.
+    this.rank = rank;
+    //create the isVisible property and assign boolean false to it.
+    this.isVisible = false;
+    //create the show() method.  This method assigns the boolean true to this.isVisible.
+    this.show = function(){
+        this.isVisible = true;
+    };
+    //create the hide() method.  This method assigns the boolean false to this.isVisible.
+    this.hide = function(){
+        this.isVisible = false;
+    };
+    };
+
+    card1 = new Card("spades", 9);
+    card2 = new Card("spades", 10);
+
+    alert(card1.rank + ' of ' + card1.suit + ' ' + card1.isVisible);
+    alert(card2.rank + ' of ' + card2.suit + ' ' + card2.isVisible);
+
+    card1.show();
+    card2.show();
+
+    alert(card1.rank + ' of ' + card1.suit + ' ' + card1.isVisible);
+    alert(card2.rank + ' of ' + card2.suit + ' ' + card2.isVisible);
+
+</script>
+
+</body>
+</html> 
