@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Blackjack</h1>
+
+    <script>
+      //initialize all variables
+      var total = 0;
+      var hitMe = true;
+      var dealer = 0;
+
+    function Card(suit, rank){
+        this.suit = suit;
+        this.rank = rank;
+        this.isVisible = false;
+
+        this.show = function(){
+            this.isVisible = true;
+        };
+
+        this.hide = function(){
+            this.isVisible = false;
+        };
+    };
+
+    deck = []
+
+    //enum
+    ranks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    suits = ['hearts', 'clubs', 'diamonds', 'spades']
+
+    for(i = 0; i < suits.length; i++){
+        for(j = 0; j < ranks.length; j++){
+            deck.push(new Card(suits[i], ranks[j]))
+        }
+    }
+
+    function takeCard(deck){
+        num = Math.floor(Math.random() * 52)
+        if (deck[num] == 0){
+            while(deck[num] == 0){
+                num = Math.floor(Math.random() * 52)
+            }
+        }
+    return deck[num].rank;
+    }
+
+      do{
+
+      hitMe = prompt("Current total: " + total + " Take a card? Y/N");
+      if (hitMe == "Y"){
+        hitMe = true;
+      }else {
+        hitMe = false;
+      }
+
+      if(hitMe){
+        total += takeCard(deck);
+      }
+      }while(hitMe && total < 21);
+
+      //final total
+
+      //dealer always takes 2 cards
+      dealer = takeCard(deck) + takeCard(deck);
+
+      alert("Your hand is worth " + total + ". Dealer got " + dealer + ".");
+
+    </script>
+  </body>
+</html>
