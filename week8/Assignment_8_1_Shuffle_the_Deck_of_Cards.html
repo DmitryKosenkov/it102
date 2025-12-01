@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Deck Shuffle</h1>
+    <div id="result"></div>
+
+    <script>
+    function Card(suit, rank){
+        this.suit = suit;
+        this.rank = rank;
+        this.isVisible = false;
+
+        this.show = function(){
+            this.isVisible = true;
+        };
+
+        this.hide = function(){
+            this.isVisible = false;
+        };
+    };
+
+    deck = []
+
+    //enum
+    ranks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    suits = ['hearts', 'clubs', 'diamonds', 'spades'];
+
+    for(i = 0; i < suits.length; i++){
+        for(j = 0; j < ranks.length; j++){
+            deck.push(new Card(suits[i], ranks[j]))
+        }
+    }
+
+    function deckShuffle(deck){
+        for(i = 0; i < deck.length; i++){
+            j = Math.floor(Math.random() * 52);
+            buffer = deck[j];
+            deck[j] = deck[i];
+            deck[i] = buffer;
+        }
+    }
+
+    function displayDeck(deck){
+        for(i = 0; i < deck.length; i++){
+            document.getElementById('result').innerHTML+= `${deck[i].rank} of ${deck[i].suit} `;
+        }
+    }
+
+    displayDeck(deck);
+    document.getElementById('result').innerHTML+= '<br>' + '<br>';
+    deckShuffle(deck);
+    displayDeck(deck);
+    </script>
+  </body>
+</html>
