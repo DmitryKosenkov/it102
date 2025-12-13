@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blackjack Game</title>
+<link rel="stylesheet" href="styles/style.css">
+
+<script src="js/index.js"></script>
+</head>
+<body>
+<div class="game-container">
+    <h1>Blackjack Game</h1>
+    <form name="userForm" id="userForm" style="display: block;">
+        Enter your name: <input type="text"> 
+        <input type="button" value="Start Game" onclick="startGame()">
+    </form>
+</div>
+
+<div id="gameArea" style="display: none;">
+    <h2 id="welcomeMessage"></h2>
+
+    <div>
+        <h3>Dealer's Cards:</h3>
+        <div id="dealerCards" class="cards"></div>
+    </div>
+
+    <div>
+        <h3>Your Cards:</h3>
+        <div id="playerCards" class="cards"></div>
+    </div>
+
+    <div id="buttons">
+        <button id="hitButton" onclick="Game.hit()">Hit</button>
+        <button id="standButton" onclick="Game.stand()">Stand</button>
+        <button id="shuffleButton" onclick="Game.shuffleDeck()">Shuffle Deck</button>
+    </div>
+
+    <h3 id="resultMessage"></h3>
+
+    <button onclick="returnToForm()">Return to Form</button>
+</div>
+</body>
+</html>
