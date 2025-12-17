@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+  function Truck(gas, mpg) {
+    this.gas = gas;
+    this.mpg = mpg;
+    this.range = this.gas * this.mpg;
+    this.empty = false;
+
+    this.drive = function (miles) {
+      this.gas -= miles/this.mpg;
+      if(this.gas <=0) {
+        this.empty = true;
+      }
+    };
+
+    this.fill = function (gallons){
+        this.gas += gallons;
+        if (this.gas > 0){
+          this.empty = false;
+        };
+    };
+
+    // Sets empty to true if no gas
+    if (this.gas <= 0){
+      this.empty = true;
+    };
+
+  }
+
+  //test code
+
+  test= new Truck(20, 15);
+
+  alert ("The range is: " + test.range); //expected output = a positive number
+  test.drive(300);
+  alert ("Empty after the drive? " + test.empty); //expected output = true
+  test.fill(10);
+  alert ("Empty after the fill? " + test.empty); //expected output = false
+
+</script>
+
+</body>
+</html>

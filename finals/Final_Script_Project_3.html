@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+  /* *************POKER DICE ***************
+
+  Creates 5 dice with A, K, Q, J, 10, 9.
+  Dice all roll.
+  Roll gives results of each of the 5 dice.
+
+  *************POKER DICE *************** */
+
+  
+  function Die(sides) { 
+    this.sides = sides;
+
+    var pokerSide = ["A", "K", "Q", "J", "10","9"];
+    this.values = [];
+    for(i = 0; i < this.sides; i++){
+      this.values[i]= i + 1; 
+    }
+
+    this.roll = function() {
+        // logic error: Math.ceil() can return an index equal to this.sides (out of bounds)
+        // var showing = Math.ceil(Math.random() * this.sides);
+        var showing = Math.floor(Math.random() * this.sides); // corrected
+        return this.values[showing];
+    };
+
+    
+    this.poker = function() {
+      for(i = 0; i < this.sides; i++){
+        this.values[i] = pokerSide[i];
+      }
+    };
+  } // syntax error: added missing closing bracket here
+
+  // syntax error: changed myDie to myDice
+  //  var myDie = []; 
+  var myDice = []; // corrected
+
+  for (c = 0; c < 5; c++){
+    // game play functionality error: changed 5 to 6
+    myDice[c] = new Die(6); 
+    myDice[c].poker();
+  }
+
+  var output = "";
+  for(k = 0; k < 5; k++){
+    output += myDice[k].roll();
+    output += " ";
+  }
+
+  alert(output);
+</script>
+
+</body>
+</html>
